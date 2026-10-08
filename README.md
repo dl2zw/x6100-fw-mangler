@@ -55,7 +55,9 @@
  * `make clean` - cleans up the directory
 
 ### Images
-   
+ > [!NOTE]
+The K4VZ images are based on an older version v0.34.0, the current version of the R1CBU images is v1.0.2
+
  * `xiegu-vanilla` - Xiegu orignal
  * `r1cbu-vanilla` - alternative of R1CBU/R2RFE
  * `k4vz-r1cbu-vanilla` - alternative of R1CBU/R2RFE with added rade_demod_wav and newer buildroot from fventuri
