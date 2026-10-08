@@ -64,6 +64,7 @@ The K4VZ images are based on an older version v0.34.0, the current version of th
  * `xiegu-modded` - Xiegu orignal patched, add more userland tools to rootfs
  * `r1cbu-modded` - alternative of R1CBU/R2RFE, rootfs extended
  * `multiboot-vanilla` - boots per default vanilla, If you keep the left-most-button pressed until you see a changed boot logo of the R1CBU/R2RFE firmware to boot it.
+   The firmwares stay as shipped: build-only changes (`/etc/.git`, populated `/dev`) are undone, R1CBU/K4VZ lose `S01create_data` and their `/dev/mmcblk0p3 /mnt` fstab entry, since the multiboot sdcard has no data partition.
  * `multiboot-modded` - boots per default modded, If you keep the left-most-button pressed until you see a changed boot logo of the R1CBU/R2RFE firmware to boot it.
  
  You can boot the different Images from sdcard by pressing and holding one of the 5 buttons below the display.The button on the far right is Button 1, the button on the far left is Button 5.
