@@ -5,7 +5,6 @@
 #DOCKER_IMAGES :=
 #DOCKER_IMAGES += xiegu-modded
 #DOCKER_IMAGES += r1cbu-modded
-#DOCKER_IMAGES += dl2zw-color_mod-modded
 #DOCKER_IMAGES += k4vz-r1cbu-modded
 
 #WORK_FILES :=
@@ -13,8 +12,6 @@
 #WORK_FILES += xiegu-modded.update.img
 #WORK_FILES += r1cbu-vanilla.sdcard.img
 #WORK_FILES += r1cbu-modded.sdcard.img
-#WORK_FILES += dl2zw-color_mod-vanilla.sdcard.img
-#WORK_FILES += dl2zw-color_mod-modded.sdcard.img
 #WORK_FILES += k4vz-r1cbu-vanilla.sdcard.img
 #WORK_FILES += k4vz-r1cbu-modded.sdcard.img
 #WORK_FILES += multiboot.sdcard.img

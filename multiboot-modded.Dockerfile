@@ -2,14 +2,12 @@
 
 FROM x6100:xiegu-modded AS xiegu
 FROM x6100:r1cbu-modded AS r1cbu
-FROM x6100:dl2zw-color_mod-modded AS dl2zw-color_mod
 FROM x6100:k4vz-r1cbu-modded AS k4vz-r1cbu
 
 FROM x6100:multiboot
 
   COPY --from=xiegu /target /target/Xiegu
   COPY --from=r1cbu /target /target/R1CBU
-  COPY --from=dl2zw-color_mod /target /target/DL2ZW-COLOR_MOD
   COPY --from=k4vz-r1cbu /target /target/K4VZ-R1CBU
 
   RUN set -e ;\
@@ -17,8 +15,8 @@ FROM x6100:multiboot
     cd /target ;\
     ln -s Xiegu Default ;\
     ln -s R1CBU Button1 ;\
-    ln -s DL2ZW-COLOR_MOD Button2 ;\
-    ln -s K4VZ-R1CBU Button3 ;\
+    ln -s K4VZ-R1CBU Button2 ;\
+    ln -s Xiegu Button3 ;\
     ln -s Xiegu Button4 ;\
     ln -s Xiegu Button5 ;\
   : # eo RUN

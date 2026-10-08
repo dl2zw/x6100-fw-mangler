@@ -1,1 +1,0 @@
-../xiegu-modded.Dockerfile.d/990_cleanup.sh

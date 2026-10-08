@@ -55,25 +55,19 @@
  * `make clean` - cleans up the directory
 
 ### Images
- > [!NOTE]
- The color_mod is based on https://github.com/wicknix/x6100_gui/releases/tag/v0.31.2-CM4 from wicknix  
- Since wicknix sold his x6100 and stopped developing the color_mod, I took over the project and added a few more features and a black Theme
- More information about the Image from fventuri you will find under https://github.com/fventuri/x6100-buildroot and https://groups.io/g/xiegu-x6100/topic/rade_on_x6100_first/119956022
    
  * `xiegu-vanilla` - Xiegu orignal
  * `r1cbu-vanilla` - alternative of R1CBU/R2RFE
- * `dl2zw-color_mod-vanilla` - alternative of R1CBU/R2RFE with color_mod from DL2ZW
  * `k4vz-r1cbu-vanilla` - alternative of R1CBU/R2RFE with added rade_demod_wav and newer buildroot from fventuri
  * `xiegu-modded` - Xiegu orignal patched, add more userland tools to rootfs
  * `r1cbu-modded` - alternative of R1CBU/R2RFE, rootfs extended
- * `dl2zw-color_mod-modded` - alternative of R1CBU/R2RFE with color_mod from DL2ZW, rootfs extended
  * `multiboot-vanilla` - boots per default vanilla, If you keep the left-most-button pressed until you see a changed boot logo of the R1CBU/R2RFE firmware to boot it.
  * `multiboot-modded` - boots per default modded, If you keep the left-most-button pressed until you see a changed boot logo of the R1CBU/R2RFE firmware to boot it.
  
  You can boot the different Images from sdcard by pressing and holding one of the 5 buttons below the display.The button on the far right is Button 1, the button on the far left is Button 5.
  * `Button 1` - alternative of R1CBU/R2RFE
- * `Button 2` - alternative of R1CBU/R2RFE with color_mod from DL2ZW
- * `Button 3` - alternative of R1CBU/R2RFE with added rade_demod_wav and newer buildroot from fventuri
+ * `Button 2` - alternative of R1CBU/R2RFE with added rade_demod_wav and newer buildroot from fventuri
+ * `Button 3` - Xiegu orignal (free for other Images)
  * `Button 4` - Xiegu orignal (free for other Images)
  * `Button 5` - Xiegu orignal (free for other Images)
  * `No Button` - Xiegu orignal

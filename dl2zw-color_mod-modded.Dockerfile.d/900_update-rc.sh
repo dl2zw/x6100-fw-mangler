@@ -1,1 +1,0 @@
-../xiegu-modded.Dockerfile.d/900_update-rc.sh

@@ -1,1 +1,0 @@
-../xiegu-opt-alpine.Dockerfile.d/900_etckeeper_commit.sh
