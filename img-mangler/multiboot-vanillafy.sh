@@ -23,8 +23,8 @@ if [ -r "$DEVTAR" ]; then
   echo "I: $ROOT: restore original /dev"
   rm -rf "$ROOT/dev"
   tar xf "$DEVTAR" -C "$ROOT"
-else
-  echo "W: $ROOT: no original /dev saved, keep it" >&2
+elif [ -n "$DEVTAR" ]; then
+  echo "W: $ROOT: $DEVTAR not found, keep /dev" >&2
 fi
 # multiboot init moves devtmpfs to /dev, the mount point must exist
 mkdir -p "$ROOT/dev"
@@ -39,3 +39,11 @@ if [ -f "$ROOT/etc/fstab" ] && \
   echo "I: $ROOT: fstab: comment out /dev/mmcblk0p3 /mnt"
   sed -i -E 's|^([[:space:]]*/dev/mmcblk0p3[[:space:]]+/mnt[[:space:]].*)$|#\1|' "$ROOT/etc/fstab"
 fi
+
+# the multiboot sdcard has only partition 2, other mmcblk0 partitions are missing
+OTHER="$(grep -nE '^[[:space:]]*/dev/mmcblk0p([013-9]|[0-9]{2,})[[:space:]]' "$ROOT/etc/fstab" 2> /dev/null || :)"
+if [ -n "$OTHER" ]; then
+  echo "W: $ROOT: fstab still mounts other sdcard partitions, check:" >&2
+  echo "$OTHER" | sed 's/^/W:   /' >&2
+fi
+

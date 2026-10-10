@@ -27,7 +27,12 @@ build: $(WORK_FILES)
 
 %.img: %.zip img-mangler/unzip-img.sh
 	$(E) "UNPACK $@ <--- $<"
-	$(Q) ./bin/D6100 sh $(SHOPT) img-mangler/unzip-img.sh $< $@
+	$(Q) ./bin/D6100 $(if $(ZIP_IMG),-e ZIP_IMG=$(ZIP_IMG)) sh $(SHOPT) img-mangler/unzip-img.sh $< $@
+	$(Q) touch $@
+
+%.img: %.img.zip img-mangler/unzip-img.sh
+	$(E) "UNPACK $@ <--- $<"
+	$(Q) ./bin/D6100 $(if $(ZIP_IMG),-e ZIP_IMG=$(ZIP_IMG)) sh $(SHOPT) img-mangler/unzip-img.sh $< $@
 	$(Q) touch $@
 
 %.img: %.img.xz
@@ -49,6 +54,12 @@ build: $(WORK_FILES)
 	$(E) "IMPORT $(NAME_PFX)$(NAME):$(<:.tar=) <--- $<"
 	$(Q) ./img-mangler/tar-import.sh $< $(NAME_PFX)$(NAME):$(<:.tgz=)
 	$(Q) : > "$@"
+
+#--- prepare a downloaded sdcard image for an existing multiboot sdcard
+# directory name on the card defaults to the image name, override with MULTIBOOT_NAME=
+%.multiboot.tar.gz: %.tar img-mangler/tar-to-multiboot.sh img-mangler/multiboot-vanillafy.sh
+	$(E) "MULTIBOOT $@ <--- $<"
+	$(Q) ./bin/D6100 sh $(SHOPT) img-mangler/tar-to-multiboot.sh $< $@ $(or $(MULTIBOOT_NAME),$(@:.multiboot.tar.gz=))
 
 #--- export mangled rootfs to tar
 %.rootfs.tar.gz: .deps/%.built Makefile

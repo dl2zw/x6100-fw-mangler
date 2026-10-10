@@ -141,6 +141,20 @@ The K4VZ images are based on an older version v0.34.0, the current version of th
 
  This depacks the image to the tar file `unknown-beauty.tar` for easier use.
 
+## Add a downloaded image to an existing multiboot sdcard
+
+ * copy it to unknown-beauty.img (or .img.xz, .zip) into this directory
+ * type `make unknown-beauty.multiboot.tar.gz`, optional `MULTIBOOT_NAME=Beauty` sets the directory name on the card
+ * a zip with more than one `.img` inside: the one named like the target is taken, else choose with `ZIP_IMG=name.img`
+
+ This takes the rootfs from partition 2 and the kernel and dtb from partition 1 into `/boot`,
+ removes `S01create_data` and comments out the `/dev/mmcblk0p3 /mnt` fstab entry.
+ Then mount partition 2 of the sdcard and, as root:
+``` sh
+tar xzf unknown-beauty.multiboot.tar.gz --numeric-owner -C /path/to/sdcard-p2
+ln -sfn unknown-beauty /path/to/sdcard-p2/Button3
+```
+
 # General X6100 help
 
 ## WiFi
