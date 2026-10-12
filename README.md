@@ -76,9 +76,14 @@ The K4VZ images are based on an older version v0.34.0, the current version of th
  * `No Button` - Xiegu orignal
  
 #### Login via ssh
- * User: root
- * Password: x6100
+- modded Images  
+ User: root  
+ Password: x6100
 
+- vanilla Images  
+ User: root  
+ Password: 123
+   
 #### tl:dr Workflow
 
  * Archiv -> Image -> TarDump -> Dockerimage --> ... modding --> desired state of /target in image
@@ -144,16 +149,22 @@ The K4VZ images are based on an older version v0.34.0, the current version of th
 ## Add a downloaded image to an existing multiboot sdcard
 
  * copy it to unknown-beauty.img (or .img.xz, .zip) into this directory
- * type `make unknown-beauty.multiboot.tar.gz`, optional `MULTIBOOT_NAME=Beauty` sets the directory name on the card
+ * type `make unknown-beauty.multiboot.tar.gz`, with optional `MULTIBOOT_NAME=<name_xxx>` sets the directory name on the card  
+   e.g. `make unknown-beauty.multiboot.tar.gz MULTIBOOT_NAME=x6100-test` the image will then be located in the x6100-test directory on the SD card
  * a zip with more than one `.img` inside: the one named like the target is taken, else choose with `ZIP_IMG=name.img`
 
  This takes the rootfs from partition 2 and the kernel and dtb from partition 1 into `/boot`,
  removes `S01create_data` and comments out the `/dev/mmcblk0p3 /mnt` fstab entry.
- Then mount partition 2 of the sdcard and, as root:
+ Then mount your multiboot sdcard and, as root:
 ``` sh
-tar xzf unknown-beauty.multiboot.tar.gz --numeric-owner -C /path/to/sdcard-p2
-ln -sfn unknown-beauty /path/to/sdcard-p2/Button3
+tar xzf unknown-beauty.multiboot.tar.gz --numeric-owner -C /path/to/sdcard
+ln -sfn unknown-beauty /path/to/sdcard/<ButtonX>
 ```
+or if you have used `MULTIBOOT_NAME=<name_xxx>`
+``` sh
+ln -sfn <name_xxx> /path/to/sdcard/<ButtonX>
+```
+`ButtonX` is the button you'll use to boot the image
 
 # General X6100 help
 
